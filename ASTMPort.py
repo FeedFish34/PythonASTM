@@ -37,6 +37,10 @@ if __name__ == '__main__':
             if(result):
                 print("receive : ",data)
                 logging.debug("接收：" + data.decode('utf-8'))
+                for s in data:
+                    if(s == 5 or s == 2 or s == 3):
+                        logging.debug("发送：" + chr(int("06")))
+                        serial.write(bytearray(chr(int("06")), encoding="utf-8"))  # 数据写回
                 EnqString = chr(int("05"))
                 StxString = chr(int("02"))
                 EtxString = chr(int("03"))
